@@ -1,0 +1,19 @@
+services:
+    redux-dv:
+        image: redux-dv:latest
+        container_name: redux-dv
+        build:
+            context: ./
+            dockerfile: ./.docker/app/Dockerfile
+        volumes:
+            - ./:/var/www/html
+        env_file:
+            - ./application/.env
+
+        environment:
+            BASEDIR: /var/www/html
+            HOME: /var/www/html/application
+
+        ports:
+            - "8006:80"
+            - "3000:300"
