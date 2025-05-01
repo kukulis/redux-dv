@@ -1,0 +1,22 @@
+server {
+    listen 80;
+    listen [::]:80;
+    server_name redux.dv;
+
+    root /var/www/html/application/build;
+
+    location /api {
+        proxy_pass '$API_URL';
+    }
+
+    location / {
+        try_files $uri /index.html;
+    }
+
+    access_log /var/www/html/logs/nginx-access.log main;
+    error_log /var/www/html/logs/nginx-error.log;
+
+
+}
+
+
