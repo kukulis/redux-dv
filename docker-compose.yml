@@ -8,7 +8,7 @@ services:
         volumes:
             - ./:/var/www/html
         env_file:
-            - ./application/.env
+            - application/.env
 
         environment:
             BASEDIR: /var/www/html
