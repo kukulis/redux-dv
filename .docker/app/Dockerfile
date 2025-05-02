@@ -16,6 +16,7 @@ RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - && apt-get install
 # RUN cp /etc/nginx/templates/default.conf.template /etc/nginx/conf.d/default.conf
 
 EXPOSE 3000
+EXPOSE 5173
 
 CMD ["nginx", "-g", "daemon off;"]
 
