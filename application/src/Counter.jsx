@@ -40,11 +40,6 @@ function Counter() {
         setCounter(counter + 2)
     }
 
-    // const handleReduxIncrement = (event) => {
-    //     console.log('handleReduxIncrement called, store state is ', store.getState());
-    //     store.dispatch(counterAddAction());
-    // }
-
     // View: the UI definition
     return (
         <>
