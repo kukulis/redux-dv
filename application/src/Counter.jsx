@@ -5,7 +5,8 @@ function Counter() {
 
     // Action: code that causes an update to the state when something happens
     const increment = () => {
-        setCounter(x => x + 1)
+        // setCounter(x => x + 1)
+        setCounter(counter+2)
     }
 
     // View: the UI definition
