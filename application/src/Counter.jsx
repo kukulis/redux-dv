@@ -1,5 +1,6 @@
 import {useState} from 'react'
-import {configureStore} from "@reduxjs/toolkit";
+import {useDispatch} from 'react-redux';
+
 
 const counterAddAction = () => {
     return {
@@ -7,28 +8,8 @@ const counterAddAction = () => {
     }
 }
 
-const counterReducer = (cnt, action) => {
-    if ( cnt === null || cnt === undefined ) {
-        return {count: 13}
-    }
 
-    if (action.type === 'counter/add') {
-        return {...cnt, count: cnt.count + 1}
-    }
-    return cnt;
-};
-
-const store = configureStore({
-    reducer: counterReducer,
-});
-
-console.log('store state at beginning:', store.getState());
-store.dispatch(counterAddAction());
-console.log('store state after dispatch:', store.getState());
-
-const selectCounterCount = (counterState) => counterState.count;
-
-function Counter() {
+function Counter({store}) {
 
 
     // State: a counter value
@@ -40,6 +21,9 @@ function Counter() {
         setCounter(counter + 2)
     }
 
+    const dispatch = useDispatch();
+
+
     // View: the UI definition
     return (
         <>
@@ -48,11 +32,11 @@ function Counter() {
                 <button onClick={increment}>Increment</button>
             </div>
             <div>
-                Redux value: {selectCounterCount(store.getState())}
+                Redux value: {store.getState().count}
                 <button onClick={(event) => {
                     event.preventDefault();
                     console.log('onClick called, store state is ', store.getState());
-                    store.dispatch(counterAddAction());
+                    dispatch(counterAddAction());
                 }}>Increment redux
                 </button>
             </div>
